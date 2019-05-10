@@ -1,0 +1,20 @@
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kam.dao.UserDao">
+	<!-- Map -->
+	<resultMap id="finduser" type="TradeCoupon">
+	   <id property="couponId" column="coupon_id"/>
+	   <id property="couponPrice" column="coupon_price"/>
+	   <id property="userId" column="user_id"/>
+	   <id property="orderId" column="order_id"/>
+	   <id property="isUsed" column="is_used"/>
+	   <id property="usedTime" column="used_time"/>
+	</resultMap>
+    <!-- select -->
+	<select id="findTradeCoupon" resultMap="finduser">
+	    select * from trade_coupon
+	</select>
+	<insert id="add" parameterType="TradeCoupon">
+	    insert into trade_coupon(coupon_id,coupon_price,user_id,order_id,is_used,used_time) 
+	    values (#{t.couponId},#{t.couponPrice},#{t.userId},#{t.orderId},#{t.isUsed},#{t.usedTime})
+	</insert>
+</mapper>
